@@ -12,6 +12,7 @@ namespace BloodBankAPI.Repository
         {
             _dataBaseContextcs = dataBaseContextcs;
         }
+
         public List<BloodBank> getBloodBankDetails()
         {
           return  _dataBaseContextcs.BloodBanks.ToList();

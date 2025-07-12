@@ -3,12 +3,13 @@ using BloodBankAPI.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+//using moq
 
 namespace BloodBankAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UserDetailsController : ControllerBase
     {
         private readonly IUserDetails _userDetails;

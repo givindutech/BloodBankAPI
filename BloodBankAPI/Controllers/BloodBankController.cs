@@ -12,12 +12,6 @@ namespace BloodBankAPI.Controllers
     [Authorize]
     public class BloodBankController : ControllerBase
     {
-        // Static list to simulate a database
-        //private static List<BloodBank> _bloodBanks = new List<BloodBank>
-        //{
-        //    new BloodBank { BloodBankID = 1, BloodBankName = "City Blood Bank", Address = "123 Main St", City = "New York", ContactNumber = "123-456-7890", UserId = "admin", Password = "admin123" },
-        //    new BloodBank { BloodBankID = 2, BloodBankName = "Green Valley Blood Bank", Address = "456 Oak Rd", City = "Los Angeles", ContactNumber = "987-654-3210", UserId = "user1", Password = "password1" }
-        //};
         private readonly DataBaseContextcs _context;
 
         public BloodBankController(DataBaseContextcs context)
@@ -28,8 +22,14 @@ namespace BloodBankAPI.Controllers
         [HttpGet("GetBloodBanks")]
         public async Task<ActionResult<IEnumerable<BloodBank>>> GetBloodBanks()
         {
+            try { 
             var ss= await _context.BloodBanks.ToListAsync();
             return ss;
+            }
+            catch(Exception ex) 
+            {
+                    return null;
+            }
         }
         // GET: api/bloodbank/{id}
         [HttpGet("GetBloodBankbyID/{id}")]

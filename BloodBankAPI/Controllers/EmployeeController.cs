@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BloodBankAPI.PublicClasses;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BloodBankAPI.Controllers
@@ -7,5 +8,11 @@ namespace BloodBankAPI.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        [HttpPost]
+        public IActionResult UploadFile(IFormFile file)
+        {
+            return Ok(new UploadHandler().Upload(file));
+        }
+
     }
 }
